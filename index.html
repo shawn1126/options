@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests;">
+    <link href="view.css" type="text/css" rel="stylesheet"/>
+
+     <script src="controller.js" type="application/javascript"> </script> 
+     <!-- <script type="text/javascript" src="node_modules/renderjson/renderjson.js"></script>  -->
+     <script type="text/javascript" src="renderjson.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/renderjson@1.4.0/renderjson.min.js"></script>
+    <script src="/dist/controller.js"></script>
+    <title>Options of Using Marlowe Runtime with Nami Wallet</title>
+  </head>
+  <body id="uiBody" onload="Controller.initialize(false)">
+    <h1 style="padding:0;margin:0">Options of Using Marlowe Runtime with Nami Wallet</h1><hr/>
+    <div id="uiPanels" style="margin:5px">
+      <table>
+        <thead><tr><th colspan="2" style="padding-top:0">Marlowe Runtime</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="width:15%"><label for="uiRuntime">URL</label></td>
+            <td><input id="uiRuntime" type="text"/></td>
+          </tr>
+        </tbody>
+        <thead><tr><th colspan="2" style="padding-top:10px">Parameters for contract</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>YOUR WALLET ADDRESS:</td>
+            <td><span id="uiAddress"/></td>
+          </tr>
+          <tr>
+            <td><label for="uiSeller">Seller address:</label></td>
+            <td><input id="uiSeller" type="text" onchange="Controller.makeContract()" value=""/></td>
+          </tr>
+          <tr>
+            <td><label for="uiBuyer">Buyer address:</label></td>
+            <td><input id="uiBuyer" type="text" onchange="Controller.makeContract()" value=""/></td>
+          </tr>
+          <tr>
+            <td><label for="uiSellerDepositTime">Seller deposit deadline:</label></td>
+            <td><input id="uiSellerDepositTime" type="text" onchange="Controller.makeContract()"/></td>
+          </tr>
+          <tr>
+            <td><label for="uiBuyerDepositTime">Buyer deposit deadline:</label></td>
+            <td><input id="uiBuyerDepositTime" type="text" onchange="Controller.makeContract()"/></td>
+          </tr>
+          <tr>
+            <td><label for="uiReleaseTime">Release time:</label></td>
+            <td><input id="uiReleaseTime" type="text" onchange="Controller.makeContract()"/></td>
+          </tr>
+          <tr>
+            <td>Contract ID:</td>
+            <td><input id="uiContractId" type="text" value=""/></td>
+            <!-- bc13a919c460a38e3de8dc667e960a0c36781b67a8a96e5233f20c0c4a393dd5#1 -->
+          </tr>
+        </tbody>
+        <thead><tr><th colspan="2" style="padding-top:10px">Transactions</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><button id="uiCreate" type="button" onclick="Controller.createContract()">1. Seller Creates Sell Put Contract with Initial ADA</button></td>
+            <td><span id="uiCreateTx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiSellerDepositU" type="button" onclick="Controller.sellerDepositUSD(3000)">2. Seller Deposits 3000 T-minus_USD into the Contract</button></td>
+            <td><span id="uiSellerDepositUTx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiBuyerDepositU" type="button" onclick="Controller.buyerDepositUSD(200)">3. Buyer deposits 200 T-minus_USD into the Contract</button></td>
+            <td><span id="uiBuyerDepositUTx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiSellerWithdrawU" type="button" onclick="Controller.sellerWithdrawUSD()">4. Seller withdraws 200 T-minus_USD</button></td>
+            <td><span id="uiSellerWithdrawUTx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiBuyerDepositA" type="button" onclick="Controller.buyerDepositADA(10000000000)">5. Buyer deposits 10000000000 LOVELACE into the Contract</button></td>
+            <td><span id="uiBuyerDepositATx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiSellerWithdrawA" type="button" onclick="Controller.sellerWithdrawADA()">6. Seller withdraws 10000000000 LOVELACE</button></td>
+            <td><span id="uiSellerWithdrawATx"/></td>
+          </tr>
+          <tr>
+            <td><button id="uiBuyerWithdrawU" type="button" onclick="Controller.buyerWithdrawUSD()">7. Buyer withdraws 3000 T-minus_USD</button></td>
+            <td><span id="uiBuyerWithdrawUTx"/></td>
+          </tr>
+        </tbody>
+        <thead><tr><th colspan="2" style="padding-top:10px">Last message</th></tr></thead>
+        <tbody>
+          <tr>
+            <td id="uiMessage" colspan="2"/>
+          </tr>
+          <tr>
+            <td colspan="2" id="uiContract"/>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

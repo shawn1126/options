@@ -1,0 +1,1 @@
+{"when":[{"then":{"when":[],"timeout_continuation":"close","timeout":1695775981415},"case":{"party":{"address":"$DEPOSITOR_ADDR"},"of_token":{"token_name":"","currency_symbol":""},"into_account":{"address":"$RECEIVER_ADDR"},"deposits":10000000}}],"timeout_continuation":"close","timeout":1695775681415}
